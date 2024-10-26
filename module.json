@@ -1,0 +1,29 @@
+{
+    "name": "FilamentTranslationsGoogle",
+    "alias": "filament-translations-google",
+    "description": {
+        "ar": "Translations Manager extension to use Google translation crawling to auto translate your __(), trans() fn",
+        "en": "Translations Manager extension to use Google translation crawling to auto translate your __(), trans() fn",
+        "gr": "Translations Manager extension to use Google translation crawling to auto translate your __(), trans() fn",
+        "sp": "Translations Manager extension to use Google translation crawling to auto translate your __(), trans() fn"
+    },
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "TomatoPHP\\FilamentTranslationsGoogle\\FilamentTranslationsGoogleServiceProvider"
+    ],
+    "files": [],
+    "title": {
+        "ar": "Filament translations google",
+        "en": "Filament translations google",
+        "gr": "Filament translations google",
+        "sp": "Filament translations google"
+    },
+    "color": "#cc1448",
+    "icon": "heroicon-c-users",
+    "placeholder": "https://raw.githubusercontent.com/tomatophp/filament-translations-google/master/art/screenshot.jpg",
+    "type": "plugin",
+    "version": "v1.0.0",
+    "github" : "https://github.com/tomatophp/filament-translations-google",
+    "docs" : "https://github.com/tomatophp/filament-translations-google"
+}
