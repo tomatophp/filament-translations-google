@@ -4,14 +4,13 @@ namespace TomatoPHP\FilamentTranslationsGoogle;
 
 use Illuminate\Support\ServiceProvider;
 
-
 class FilamentTranslationsGoogleServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
         //Register generate command
         $this->commands([
-           \TomatoPHP\FilamentTranslationsGoogle\Console\FilamentTranslationsGoogleInstall::class,
+            \TomatoPHP\FilamentTranslationsGoogle\Console\FilamentTranslationsGoogleInstall::class,
         ]);
 
         //Register Config file
@@ -19,7 +18,7 @@ class FilamentTranslationsGoogleServiceProvider extends ServiceProvider
 
         //Publish Config
         $this->publishes([
-           __DIR__.'/../config/filament-translations-google.php' => config_path('filament-translations-google.php'),
+            __DIR__.'/../config/filament-translations-google.php' => config_path('filament-translations-google.php'),
         ], 'filament-translations-google-config');
 
         //Register Langs
@@ -27,7 +26,7 @@ class FilamentTranslationsGoogleServiceProvider extends ServiceProvider
 
         //Publish Lang
         $this->publishes([
-           __DIR__.'/../resources/lang' => base_path('lang/vendor/filament-translations-google'),
+            __DIR__.'/../resources/lang' => base_path('lang/vendor/filament-translations-google'),
         ], 'filament-translations-google-lang');
 
     }
