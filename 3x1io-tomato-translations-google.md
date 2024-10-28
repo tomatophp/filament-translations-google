@@ -1,7 +1,7 @@
 ---
-name: Filament translations google
-slug: filament-translations-google
-author_slug: tomatophp
+name: Google Translations 
+slug: 3x1io-tomato-translations-google
+author_slug: 3x1io
 categories: [developer-tools]
 description: Translations Manager extension to use Google translation crawling to auto translate your __(), trans() fn
 discord_url:
