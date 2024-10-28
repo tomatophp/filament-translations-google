@@ -52,7 +52,7 @@ abstract class TestCase extends BaseTestCase
     public function getEnvironmentSetUp($app): void
     {
         $app['config']->set('database.default', 'sqlite');
-        $app['config']->set('database.connections.sqlite.database', __DIR__.'/../database/database.sqlite');
+        $app['config']->set('database.connections.sqlite.database', __DIR__ . '/../database/database.sqlite');
 
         $app['config']->set('filament-translations.use_queue_on_scan', false);
 
@@ -62,7 +62,7 @@ abstract class TestCase extends BaseTestCase
 
         $app['config']->set('view.paths', [
             ...$app['config']->get('view.paths'),
-            __DIR__.'/../resources/views',
+            __DIR__ . '/../resources/views',
         ]);
     }
 }

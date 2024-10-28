@@ -14,19 +14,19 @@ class FilamentTranslationsGoogleServiceProvider extends ServiceProvider
         ]);
 
         //Register Config file
-        $this->mergeConfigFrom(__DIR__.'/../config/filament-translations-google.php', 'filament-translations-google');
+        $this->mergeConfigFrom(__DIR__ . '/../config/filament-translations-google.php', 'filament-translations-google');
 
         //Publish Config
         $this->publishes([
-            __DIR__.'/../config/filament-translations-google.php' => config_path('filament-translations-google.php'),
+            __DIR__ . '/../config/filament-translations-google.php' => config_path('filament-translations-google.php'),
         ], 'filament-translations-google-config');
 
         //Register Langs
-        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'filament-translations-google');
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'filament-translations-google');
 
         //Publish Lang
         $this->publishes([
-            __DIR__.'/../resources/lang' => base_path('lang/vendor/filament-translations-google'),
+            __DIR__ . '/../resources/lang' => base_path('lang/vendor/filament-translations-google'),
         ], 'filament-translations-google-lang');
 
     }
