@@ -4,7 +4,9 @@ namespace TomatoPHP\FilamentTranslationsGoogle;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
-use TomatoPHP\FilamentTranslations\Filament\Resources\TranslationResource\Actions\ManagePageActions;
+use TomatoPHP\FilamentTranslations\Facade\FilamentTranslations;
+use TomatoPHP\FilamentTranslations\Filament\Resources\Translations\Pages\ListTranslations;
+use TomatoPHP\FilamentTranslations\Filament\Resources\Translations\Pages\ManageTranslations;
 use TomatoPHP\FilamentTranslationsGoogle\Filament\Actions\GoogleTranslationAction;
 
 class FilamentTranslationsGooglePlugin implements Plugin
@@ -21,7 +23,8 @@ class FilamentTranslationsGooglePlugin implements Plugin
 
     public function boot(Panel $panel): void
     {
-        ManagePageActions::register(GoogleTranslationAction::make());
+        FilamentTranslations::register(GoogleTranslationAction::make(), ManageTranslations::class);
+        FilamentTranslations::register(GoogleTranslationAction::make(), ListTranslations::class);
     }
 
     public static function make(): self

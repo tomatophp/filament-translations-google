@@ -1,4 +1,4 @@
-![Screenshot](https://raw.githubusercontent.com/tomatophp/filament-translations-google/master/arts/3x1io-tomato-translations-google.jpg)
+![Screenshot](https://raw.githubusercontent.com/tomatophp/filament-translations-google/master/arts/fadymondy-tomato-translations-google.jpg)
 
 # Filament Google Translations
 

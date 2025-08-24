@@ -9,23 +9,37 @@ use Filament\FilamentServiceProvider;
 use Filament\Forms\FormsServiceProvider;
 use Filament\Infolists\InfolistsServiceProvider;
 use Filament\Notifications\NotificationsServiceProvider;
+use Filament\Panel;
+use Filament\Schemas\SchemasServiceProvider;
 use Filament\Support\SupportServiceProvider;
 use Filament\Tables\TablesServiceProvider;
 use Filament\Widgets\WidgetsServiceProvider;
+use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Livewire\LivewireServiceProvider;
+use Orchestra\Testbench\Attributes\WithEnv;
 use Orchestra\Testbench\Concerns\WithWorkbench;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
 use TomatoPHP\FilamentTranslations\FilamentTranslationsServiceProvider;
 use TomatoPHP\FilamentTranslationsGoogle\FilamentTranslationsGoogleServiceProvider;
 
+#[WithEnv('DB_CONNECTION', 'testing')]
 abstract class TestCase extends BaseTestCase
 {
+    use LazilyRefreshDatabase;
     use WithWorkbench;
+
+    public ?Panel $panel;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->panel = app(Panel::class);
+    }
 
     protected function getPackageProviders($app): array
     {
-        return [
+        $providers = [
             ActionsServiceProvider::class,
             BladeCaptureDirectiveServiceProvider::class,
             BladeHeroiconsServiceProvider::class,
@@ -35,6 +49,7 @@ abstract class TestCase extends BaseTestCase
             InfolistsServiceProvider::class,
             LivewireServiceProvider::class,
             NotificationsServiceProvider::class,
+            SchemasServiceProvider::class,
             SupportServiceProvider::class,
             TablesServiceProvider::class,
             WidgetsServiceProvider::class,
@@ -42,6 +57,10 @@ abstract class TestCase extends BaseTestCase
             FilamentTranslationsGoogleServiceProvider::class,
             AdminPanelProvider::class,
         ];
+
+        sort($providers);
+
+        return $providers;
     }
 
     protected function defineDatabaseMigrations(): void

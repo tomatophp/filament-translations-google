@@ -16,7 +16,7 @@ class GoogleTranslationAction
             ->icon('heroicon-o-language')
             ->hiddenLabel()
             ->tooltip(trans('filament-translations::translation.google_scan'))
-            ->form([
+            ->schema([
                 Select::make('language')
                     ->searchable()
                     ->options(

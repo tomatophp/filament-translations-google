@@ -1,6 +1,11 @@
 <?php
 
-use TomatoPHP\FilamentTranslations\Filament\Resources\TranslationResource;
+use Filament\Facades\Filament;
+use TomatoPHP\FilamentTranslations\Filament\Resources\Translations\Pages\ListTranslations;
+use TomatoPHP\FilamentTranslations\Filament\Resources\Translations\Pages\ManageTranslations;
+use TomatoPHP\FilamentTranslations\Filament\Resources\Translations\TranslationResource;
+use TomatoPHP\FilamentTranslations\FilamentTranslationsPlugin;
+use TomatoPHP\FilamentTranslationsGoogle\FilamentTranslationsGooglePlugin;
 use TomatoPHP\FilamentTranslationsGoogle\Tests\Models\User;
 
 use function Pest\Laravel\actingAs;
@@ -9,6 +14,18 @@ use function Pest\Livewire\livewire;
 
 beforeEach(function () {
     actingAs(User::factory()->create());
+
+    $this->panel = Filament::getCurrentOrDefaultPanel();
+
+    $this->panel->plugin(
+        FilamentTranslationsPlugin::make()
+            ->allowCreate()
+            ->allowClearTranslations()
+    );
+
+    $this->panel->plugin(
+        FilamentTranslationsGooglePlugin::make()
+    );
 });
 
 it('can render translation resource', function () {
@@ -17,11 +34,11 @@ it('can render translation resource', function () {
 
 it('can render translation google button', function () {
     if (config('filament-translations.modal')) {
-        livewire(TranslationResource\Pages\ManageTranslations::class)
+        livewire(ManageTranslations::class)
             ->mountAction('google')
             ->assertSuccessful();
     } else {
-        livewire(\TomatoPHP\FilamentTranslations\Filament\Resources\TranslationResource\Pages\ListTranslations::class)
+        livewire(ListTranslations::class)
             ->mountAction('google')
             ->assertSuccessful();
     }
