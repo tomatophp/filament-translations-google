@@ -30,12 +30,20 @@ class ScanWithGoogleTranslate implements ShouldQueue
      */
     public function handle(): void
     {
-        $translator = new GoogleTranslate($this->language);
+        // Resolved from the container so an app (or a public demo) can bind its own translator.
+        $translator = app(GoogleTranslate::class)
+            ->setTarget($this->language)
+            ->preserveParameters();
 
-        Translation::chunk(200, function (Collection $translations) use ($translator) {
+        Translation::query()->chunkById(200, function (Collection $translations) use ($translator) {
             foreach ($translations as $translation) {
-                $textToTranslate = $translation->text['en'] ?? $translation['key'];
-                $translation->setTranslation($this->language, $translator->translate($textToTranslate));
+                $source = $translation->text['en'] ?? $translation->key;
+
+                if (blank($source)) {
+                    continue;
+                }
+
+                $translation->setTranslation($this->language, $translator->translate($source) ?? $source);
                 $translation->save();
             }
         });

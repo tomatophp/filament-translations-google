@@ -3,6 +3,7 @@
 namespace TomatoPHP\FilamentTranslationsGoogle;
 
 use Illuminate\Support\ServiceProvider;
+use TomatoPHP\FilamentTranslationsGoogle\Console\FilamentTranslationsGoogleInstall;
 
 class FilamentTranslationsGoogleServiceProvider extends ServiceProvider
 {
@@ -10,7 +11,7 @@ class FilamentTranslationsGoogleServiceProvider extends ServiceProvider
     {
         // Register generate command
         $this->commands([
-            \TomatoPHP\FilamentTranslationsGoogle\Console\FilamentTranslationsGoogleInstall::class,
+            FilamentTranslationsGoogleInstall::class,
         ]);
 
         // Register Config file
